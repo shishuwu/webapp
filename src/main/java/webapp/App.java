@@ -5,4 +5,8 @@ public class App {
 		System.out.print("hello world");
 		return "hello world";
 	}
+	
+	public void sayHello(){
+		System.out.println("say hello method");
+	}
 }
