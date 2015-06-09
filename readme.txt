@@ -20,3 +20,7 @@ Some things need to be aware:
 	-- CI: you also need to be aware of the proxy things. Such as:
 			* Download plugins
 				 
+===========================================TODO===============================================
+* Integrate with test coverage plugin: ??
+
+* Integrate with code check plugin: checkstyle?? 
