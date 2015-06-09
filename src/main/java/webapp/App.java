@@ -1,7 +1,8 @@
 package webapp;
 
 public class App {
-	public void print(){
-		System.out.print("hello hello");
+	public String print(){
+		System.out.print("hello world");
+		return "hello world";
 	}
 }
