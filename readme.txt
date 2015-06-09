@@ -1,10 +1,10 @@
-=======================================PURPOSE===============================================
+====================================PURPOSE========================================
 
 This is simple web application which is used to test following frameworks.
 -- Maven integration
 -- CI integration
 
-========================================NOTE===============================================
+=====================================NOTE==========================================
 Some things need to be aware:
 
 * Proxy: If the dev environment is behind a proxy, you need to configure in many places
@@ -18,9 +18,15 @@ Some things need to be aware:
 		
 				 
 	-- CI: you also need to be aware of the proxy things. Such as:
-			* Download plugins
+			* When need to download plugins
 				 
-===========================================TODO===============================================
-* Integrate with test coverage plugin: ??
+===================================== DONE ========================================
+
+* 2015xxxx:  
+
+* 20150609: Integrate with test coverage plugin: 
+	-- cobertura: more refer to url http://my.oschina.net/dlpinghailinfeng/blog/301021
+
+==================================== TODO =========================================
 
 * Integrate with code check plugin: checkstyle?? 

@@ -1,4 +1,4 @@
-package webapp;
+package com.jasonshi.service;
 
 public class App {
 	public String print(){

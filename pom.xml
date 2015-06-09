@@ -27,6 +27,7 @@
 			<!-- CODE COVERAGE PLUGIN -->
 			<!-- To run goal "cobertura:cobertura" -->
 			<!-- For more goals, run "cobertura:help" -->
+			<!-- http://my.oschina.net/dlpinghailinfeng/blog/301021 -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>cobertura-maven-plugin</artifactId>

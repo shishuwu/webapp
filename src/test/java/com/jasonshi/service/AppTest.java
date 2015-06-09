@@ -1,7 +1,9 @@
-package webapp;
+package com.jasonshi.service;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import com.jasonshi.service.App;
 
 public class AppTest extends App {
 
