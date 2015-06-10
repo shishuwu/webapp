@@ -19,14 +19,27 @@ Some things need to be aware:
 				 
 	-- CI: you also need to be aware of the proxy things. Such as:
 			* When need to download plugins
+			
+			
+* JDK version 
+	-- Some plugins do not support 1.8 so far, such as findbugs plugin. Better use 1.7
 				 
 ===================================== DONE ========================================
 
-* 2015xxxx:  
+* 20150610: Integrate with CheckStype: 
+	-- URL: http://maven.apache.org/plugins/maven-checkstyle-plugin/usage.html
+	-- Basically the code convention, style...
+
+* 20150610: Inegrate with FindBugs
+	-- Can find potential bugs
 
 * 20150609: Integrate with test coverage plugin: 
 	-- cobertura: more refer to url http://my.oschina.net/dlpinghailinfeng/blog/301021
 
 ==================================== TODO =========================================
 
-* Integrate with code check plugin: checkstyle?? 
+* Integrate with notification mechanism: mail?
+
+* Check list
+	- Run test 2 times ???
+	- Check plugin config file?
