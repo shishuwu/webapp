@@ -34,27 +34,3 @@
 				</executions>
 			</plugin>
 			
-			
-			
-			
-			
-			
-			
-			<!-- Find bugs report plug in -->
-				<plugin>
-	              <groupId>org.codehaus.mojo</groupId>
-	              <artifactId>findbugs-maven-plugin</artifactId>
-	              <version>2.5.4</version>
-	              <configuration>
-	                  <!-- <configLocation>${basedir}/springside-findbugs.xml</configLocation> -->
-	                  <!-- <threshold>High</threshold>  -->
-	                 <!--  <effort>Default</effort> -->
-	                  <!--<findbugsXmlOutput>true</findbugsXmlOutput> -->
-	                   <!-- findbugs xml output path-->         
-	                  <!-- <findbugsXmlOutputDirectory>target/site</findbugsXmlOutputDirectory>  -->
-	                  <xmlOutput>true</xmlOutput>
-	                  <effort>Max</effort>
-                      <threshold>Low</threshold>
-	                  <xmlOutputDirectory>target/site</xmlOutputDirectory>
-	              </configuration>
-	           </plugin>

@@ -22,9 +22,16 @@ Some things need to be aware:
 			
 			
 * JDK version 
-	-- Some plugins do not support 1.8 so far, such as findbugs plugin. Better use 1.7
+	-- Some plugins do not support 1.8 currently, such as findbugs plugin. Better use 1.7
+	
+	
+	
+
 				 
 ===================================== DONE ========================================
+
+* 20150610: Notification with email
+	-- Test successfully using smtp.163.com in Jenkins
 
 * 20150610: Integrate with CheckStype: 
 	-- URL: http://maven.apache.org/plugins/maven-checkstyle-plugin/usage.html
@@ -38,7 +45,9 @@ Some things need to be aware:
 
 ==================================== TODO =========================================
 
-* Integrate with notification mechanism: mail?
+* Multiple projects
+
+* Other language: such as C++
 
 * Check list
 	- Run test 2 times ???
