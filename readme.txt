@@ -45,9 +45,9 @@ Some things need to be aware:
 
 ==================================== TODO =========================================
 
-* Multiple projects
+* Multiple projects and remote projects
 
-* Other language: such as C++
+* Other language: such as C++ integration
 
 * Check list
 	- Run test 2 times ???
