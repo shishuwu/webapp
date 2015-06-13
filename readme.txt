@@ -24,11 +24,39 @@ Some things need to be aware:
 * JDK version 
 	-- Some plugins do not support 1.8 currently, such as findbugs plugin. Better use 1.7
 	
+* About Multiple Projects
+	-- Suppose you 3 projects: pro-common, pro-client (rely on common), pro-server (rely on common)
+	
+		-- From original build/integration process: You must have all source code at one local machine. 
+			* Then write shell and build one by one. 
+			* If you want build each project on "different" machine independently. That won't work!!!
+
+		-- For Maven: You need to setup a "Repository Server" (store private/public jar)
+			* After build common, it will upload its jar to Server. [goal: install]
+			* Other projects rely to common, could get latest common from the Server. Then do the build
+			* (Different project could be in different machines to do build, only need to be aware of the sequence)
+			
+			Note: 
+			1. When you change "common" code, you need to run the goal "install" to upload repository 
+			   and other projects update their reference content.
+			
+			2. If have all code, it will be OK whether you have local repository or not, because you build by own.
+			   But think about this situation: There are 2 team:
+			   -- Platform team: develop common platform tools/jars
+			   -- My team >> Alarm module team: develop alarm module which will use platform jars.
+			   
+			   The advantage is that: 
+			   -- For my team: i do not need to get source code of platform
+			   -- Need only set a pom dependency in my projects. And maven will get platform jars from repository server.
 	
 	
 
 				 
 ===================================== DONE ========================================
+
+* 20150613: Multiple projects testing
+	-- Maven: Local Repository
+	-- Jenkins: "Multiple SCMs" plugin (in jenkins)
 
 * 20150610: Notification with email
 	-- Test successfully using smtp.163.com in Jenkins
@@ -50,5 +78,6 @@ Some things need to be aware:
 * Other language: such as C++ integration
 
 * Check list
+	- How to upload jars to central repository???
 	- Run test 2 times ???
 	- Check plugin config file?
