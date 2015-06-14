@@ -40,7 +40,7 @@ Some things need to be aware:
 			1. When you change "common" code, you need to run the goal "install" to upload repository 
 			   and other projects update their reference content.
 			
-			2. If have all code, it will be OK whether you have local repository or not, because you build by own.
+			2. If have all code, it will be OK whether you have "local repository" or not, because you build by own.
 			   But think about this situation: There are 2 team:
 			   -- Platform team: develop common platform tools/jars
 			   -- My team >> Alarm module team: develop alarm module which will use platform jars.
@@ -49,14 +49,17 @@ Some things need to be aware:
 			   -- For my team: i do not need to get source code of platform
 			   -- Need only set a pom dependency in my projects. And maven will get platform jars from repository server.
 	
-	
+			3. Jenkins has maven plugin
+				-- It can configure the maven "local repository": by default, stored at c:\.m2\repository
 
 				 
 ===================================== DONE ========================================
 
 * 20150613: Multiple projects testing
 	-- Maven: Local Repository
-	-- Jenkins: "Multiple SCMs" plugin (in jenkins)
+	-- Jenkins: 
+		-- Maven plugin: local repository (c:/.m2)
+		-- "Multiple SCMs" plugin (in jenkins)
 
 * 20150610: Notification with email
 	-- Test successfully using smtp.163.com in Jenkins
