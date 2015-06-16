@@ -55,8 +55,18 @@ Some things need to be aware:
 				 
 ===================================== DONE ========================================
 
+* 20150616: Jenkins nodes
+	-- Master/Slave nodes
+		http://blog.csdn.net/wangmuming/article/details/22925961
+	-- Connection: jnlp
+	
+	-- Map job(project) to specified node: Configure -> Restrict where this project can be run -> Node label name
+	-- Seems like the slave need extra
+		* Git or Maven installation exact as Master's ?
+		* You can specify node's own extra (maven/jdk) homes!!!
+
 * 20150613: Multiple projects testing
-	-- Maven: Local Repository
+	-- Maven: Local(or remote: need nexus server) Repository to solve the dependency of multiple threads!!
 	-- Jenkins: 
 		-- Maven plugin: local repository (c:/.m2)
 		-- "Multiple SCMs" plugin (in jenkins)
@@ -75,8 +85,9 @@ Some things need to be aware:
 	-- cobertura: more refer to url http://my.oschina.net/dlpinghailinfeng/blog/301021
 
 ==================================== TODO =========================================
-
-* Multiple projects and remote projects
+ 
+* Remote projects
+	- looks like the nodes didn't upload the build result to master?
 
 * Other language: such as C++ integration
 
