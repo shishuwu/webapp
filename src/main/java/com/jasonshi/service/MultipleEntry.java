@@ -11,5 +11,4 @@ public class MultipleEntry implements CommonInterface{
 	public void sayHi() {
 		// TODO Auto-generated method stub
 	}
-
 }

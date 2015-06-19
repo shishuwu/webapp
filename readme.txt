@@ -54,6 +54,8 @@ Some things need to be aware:
 
 				 
 ===================================== DONE ========================================
+* 20150619: Jenkins multi-configuration
+	-- Mutliple-dimension: axis (oses/jdks/databases)  -> simultaneously
 
 * 20150616: Jenkins nodes
 	-- Master/Slave nodes
