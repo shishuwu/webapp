@@ -54,6 +54,12 @@ Some things need to be aware:
 
 				 
 ===================================== DONE ========================================
+* 20150622: Jenkins - Parameterized build
+	-- Just like a method in program: public boolean build(String param1, boolean param2, ...)
+	-- Steps: 1 -> Define parameters
+			  2 -> Try to build, pass the values of the parameters
+			  3 -> Use following format to get param value: ${param1}
+
 * 20150619: Jenkins multi-configuration
 	-- Mutliple-dimension: axis (oses/jdks/databases)  -> simultaneously
 

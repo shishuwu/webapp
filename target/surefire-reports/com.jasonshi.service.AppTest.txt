@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.jasonshi.service.AppTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.084 sec <<< FAILURE!
-testFail(com.jasonshi.service.AppTest)  Time elapsed: 0.023 sec  <<< ERROR!
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.04 sec <<< FAILURE!
+testFail(com.jasonshi.service.AppTest)  Time elapsed: 0.006 sec  <<< ERROR!
 java.lang.ArithmeticException: / by zero
 	at com.jasonshi.service.AppTest.testFail(AppTest.java:18)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
