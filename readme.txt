@@ -52,6 +52,10 @@ Some things need to be aware:
 			3. Jenkins has maven plugin
 				-- It can configure the maven "local repository": by default, stored at c:\.m2\repository
 
+
+* Maven
+	-- If web project: web related sources are under src/main/<pro_name>/...
+
 				 
 ===================================== DONE ========================================
 * 20150619: Jenkins multi-configuration
