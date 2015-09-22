@@ -8,7 +8,6 @@ public class App {
 
 	public void sayHello() {
 		System.out.println("say hello method");
-		xx
 	}
 
 	public void bugMethod(String userName, String password) {
