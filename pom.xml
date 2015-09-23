@@ -88,12 +88,11 @@
 				<artifactId>maven-jetty-plugin</artifactId>
 				<version>6.1.26</version>
 
-				<configuration>
-					<encoding>UTF-8</encoding>
-					<scanIntervalSeconds>10</scanIntervalSeconds>
-					<stopKey>foo</stopKey>
-					<stopPort>9999</stopPort>
-				</configuration>  
+	            <configuration>
+	                <stopPort>9966</stopPort>
+	                <stopKey>stopKey</stopKey>
+	                <stopWait>20</stopWait>
+	            </configuration>
 			</plugin>
 		</plugins>
 		<pluginManagement>
