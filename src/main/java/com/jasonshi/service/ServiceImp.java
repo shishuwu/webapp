@@ -4,7 +4,7 @@ import com.shishuwu.rabbit.rabbit_common.CommonInterface;
 
 public class ServiceImp implements CommonInterface{
 
-	public String printx() {
+	public String print() {
 		return "invoke print method";
 	}
 
