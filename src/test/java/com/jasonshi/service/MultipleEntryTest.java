@@ -7,7 +7,7 @@ public class MultipleEntryTest {
 
 	@Test
 	public void testPrint() {
-		Assert.assertEquals("web", new MultipleEntry().print());
+		Assert.assertEquals("web", new ServiceImp().print());
 	}
 
 }

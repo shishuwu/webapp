@@ -2,13 +2,13 @@ package com.jasonshi.service;
 
 import com.shishuwu.rabbit.rabbit_common.CommonInterface;
 
-public class MultipleEntry implements CommonInterface{
+public class ServiceImp implements CommonInterface{
 
 	public String print() {
-		return "web";
+		return "invoke print method";
 	}
 
 	public void sayHi() {
-		// TODO Auto-generated method stub
+		System.out.println("Hi");
 	}
 }
