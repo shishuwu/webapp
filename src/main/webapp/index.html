@@ -1,13 +1,43 @@
-<!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>This is my test web</title>
+<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
 </head>
 <body>
-	<h1>Hello world & Jenkins.</h1>
-	<h2>
-		Test <font color="#FF0000">2000</font>
-	</h2>
+	<label>Chart Type</label>
+	<br>
+	<select>
+		<option value="pie">Pie</option>
+		<option value="bar">Bar</option>
+	</select>
+	<br>
+	<label>Chart Settings</label>
+	<br>
+	<label>Dimension: </label>
+	<select>
+		<option value="p_name">P_Name</option>
+		<option value="p_region">P_Region</option>
+		<option value="p_year">P_Year</option>
+	</select>
+	<br>
+
+	<label>Metric: Avg</label>
+	<select>
+		<option value="p_score">P_Score</option>
+		<option value="p_price">P_Price</option>
+	</select>
+	<br>
+
+	<label>Display Options</label>
+	<br>
+	<label>Width:</label>
+	<label><input name="mygroup" type="radio" value="" /> </label>
+	<input name="width" type="text" value="500" />
+	<label><input name="mygroup" type="radio" value="" />Auto</label>
+	<br>
+	<label>Height:</label>
+	<label><input name="mygroup2" type="radio" value="" /> </label>
+	<input name="height" type="text" value="500" />
+	<label><input name="mygroup2" type="radio" value="" />Auto</label>
+
 </body>
 </html>
