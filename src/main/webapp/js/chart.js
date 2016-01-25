@@ -10,8 +10,8 @@ function drawChart() {
 }
 
 function drawPie() {
-	var width = 1500;
-	var height = 1500;
+	var width = viewModel.width();
+	var height = viewModel.height();
 	// var color = d3.scale.ordinal().range([ "red", "orange", "blue" ]);
 	var color = d3.scale.linear().domain([ 0, 100 ]).range([ "red", "blue" ]);
 

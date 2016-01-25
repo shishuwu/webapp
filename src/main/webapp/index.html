@@ -24,10 +24,12 @@
 			<label>Chart Settings</label>
 			<blockquote>
 				<div>
-					<label>Dimension: </label> <select data-bind="options: dimensions"></select>
+					<label>Dimension: </label> <select
+						data-bind="options: dimensions, value: selectedDimension"></select>
 				</div>
 				<div>
-					<label>Metric: Avg</label> <select data-bind="options: metrics"></select>
+					<label>Metric: Avg</label> <select
+						data-bind="options: metrics, value: selectedMetric"></select>
 				</div>
 			</blockquote>
 		</div>
@@ -35,16 +37,19 @@
 		<div id="display">
 			<label>Display Options</label>
 			<blockquote>
-				<div>
-					<label>Width:</label><label><input name="gw" type="radio"
-						value="" /> </label> <input data-bind="value: width" /> <label><input
-						name="gw" type="radio" value="" />Auto</label> <br> <span
-						data-bind="text: width"></span>
+				<div id="width">
+					<div>
+						<label>Width</label> <input name="gw" type="radio" value="" /> <input
+							data-bind="value: width" /> <input name="gw" type="radio"
+							value="" /> <label>Auto</label>
+					</div>
+					<!-- <span
+						data-bind="text: width"></span>-->
 				</div>
-				<div>
-					<label>Height:</label> <label><input name="gh" type="radio"
-						value="" /> </label> <input data-bind="value: height" /> <label><input
-						name="gh" type="radio" value="" />Auto</label>
+				<div id="height">
+					<label>Height</label> <input name="gh" type="radio" value="" /> <input
+						data-bind="value: height" /> <input name="gh" type="radio"
+						value="" /><label>Auto</label>
 				</div>
 			</blockquote>
 		</div>
