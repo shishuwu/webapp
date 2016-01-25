@@ -1,43 +1,63 @@
+<!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="js/jquery-1.12.0.min.js"></script>
+<script src="js/knockout-3.4.0.js"></script>
+<script src="js/d3.min.js"></script>
+<script src="js/actions.js"></script>
+
 </head>
+
 <body>
-	<label>Chart Type</label>
-	<br>
-	<select>
-		<option value="pie">Pie</option>
-		<option value="bar">Bar</option>
-	</select>
-	<br>
-	<label>Chart Settings</label>
-	<br>
-	<label>Dimension: </label>
-	<select>
-		<option value="p_name">P_Name</option>
-		<option value="p_region">P_Region</option>
-		<option value="p_year">P_Year</option>
-	</select>
-	<br>
+	<div>
+		<label>Chart Type</label>
+		<blockquote>
+			<select onchange="update();" data-bind="options: chartTypes"></select>
+			<!-- <select>
+				<option value="pie">Pie</option>
+				<option value="bar">Bar</option>
+			</select> -->
+		</blockquote>
+	</div>
 
-	<label>Metric: Avg</label>
-	<select>
-		<option value="p_score">P_Score</option>
-		<option value="p_price">P_Price</option>
-	</select>
-	<br>
+	<div>
+		<label>Chart Settings</label>
+		<blockquote>
+			<div>
+				<label>Dimension: </label> <select data-bind="options: dimensions"></select>
+			</div>
+			<div>
+				<label>Metric: Avg</label> <select data-bind="options: metrics"></select>
+			</div>
+			<!-- 
+			<select>
+				<option value="p_name">P_Name</option>
+				<option value="p_region">P_Region</option>
+				<option value="p_year">P_Year</option>
+			</select> <br> <label>Metric: Avg</label> <select>
+				<option value="p_score">P_Score</option>
+				<option value="p_price">P_Price</option>
+			</select>
+			 -->
+		</blockquote>
+	</div>
 
-	<label>Display Options</label>
-	<br>
-	<label>Width:</label>
-	<label><input name="mygroup" type="radio" value="" /> </label>
-	<input name="width" type="text" value="500" />
-	<label><input name="mygroup" type="radio" value="" />Auto</label>
-	<br>
-	<label>Height:</label>
-	<label><input name="mygroup2" type="radio" value="" /> </label>
-	<input name="height" type="text" value="500" />
-	<label><input name="mygroup2" type="radio" value="" />Auto</label>
-
+	<div>
+		<label>Display Options</label>
+		<blockquote>
+			<div>
+				<label>Width:</label><label><input name="gw" type="radio"
+					value="" /> </label> <input data-bind="value: width" /> <label><input
+					name="gw" type="radio" value="" />Auto</label> <br>
+			</div>
+			<div>
+				<label>Height:</label> <label><input name="gh" type="radio"
+					value="" /> </label> <input data-bind="value: height" /> <label><input
+					name="gh" type="radio" value="" />Auto</label>
+			</div>
+		</blockquote>
+	</div>
+	<script src="js\view-model.js"></script>
 </body>
 </html>
