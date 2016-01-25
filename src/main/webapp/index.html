@@ -13,11 +13,8 @@
 	<div>
 		<label>Chart Type</label>
 		<blockquote>
-			<select onchange="update();" data-bind="options: chartTypes"></select>
-			<!-- <select>
-				<option value="pie">Pie</option>
-				<option value="bar">Bar</option>
-			</select> -->
+			<select onchange="update();" data-bind="options: chartTypes, value: selectedChartType"></select>
+			<span data-bind="text: selectedChartType"></span>
 		</blockquote>
 	</div>
 
@@ -50,6 +47,7 @@
 				<label>Width:</label><label><input name="gw" type="radio"
 					value="" /> </label> <input data-bind="value: width" /> <label><input
 					name="gw" type="radio" value="" />Auto</label> <br>
+					<span data-bind="text: width"></span>
 			</div>
 			<div>
 				<label>Height:</label> <label><input name="gh" type="radio"
