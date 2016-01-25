@@ -2,60 +2,55 @@
 <html>
 <head>
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/chart.css">
 <script src="js/jquery-1.12.0.min.js"></script>
 <script src="js/knockout-3.4.0.js"></script>
 <script src="js/d3.min.js"></script>
-<script src="js/actions.js"></script>
-
+<script src="js/d3.tip.v0.6.3.js"></script>
+<script src="js/chart.js"></script>
 </head>
 
 <body>
-	<div>
-		<label>Chart Type</label>
-		<blockquote>
-			<select onchange="update();" data-bind="options: chartTypes, value: selectedChartType"></select>
-			<span data-bind="text: selectedChartType"></span>
-		</blockquote>
-	</div>
+	<div id="config">
+		<div id="type">
+			<label>Chart Type</label>
+			<blockquote>
+				<select data-bind="options: chartTypes, value: selectedChartType"></select>
+				<!-- <span data-bind="text: selectedChartType"></span>  -->
+			</blockquote>
+		</div>
 
-	<div>
-		<label>Chart Settings</label>
-		<blockquote>
-			<div>
-				<label>Dimension: </label> <select data-bind="options: dimensions"></select>
-			</div>
-			<div>
-				<label>Metric: Avg</label> <select data-bind="options: metrics"></select>
-			</div>
-			<!-- 
-			<select>
-				<option value="p_name">P_Name</option>
-				<option value="p_region">P_Region</option>
-				<option value="p_year">P_Year</option>
-			</select> <br> <label>Metric: Avg</label> <select>
-				<option value="p_score">P_Score</option>
-				<option value="p_price">P_Price</option>
-			</select>
-			 -->
-		</blockquote>
-	</div>
+		<div id="setting">
+			<label>Chart Settings</label>
+			<blockquote>
+				<div>
+					<label>Dimension: </label> <select data-bind="options: dimensions"></select>
+				</div>
+				<div>
+					<label>Metric: Avg</label> <select data-bind="options: metrics"></select>
+				</div>
+			</blockquote>
+		</div>
 
-	<div>
-		<label>Display Options</label>
-		<blockquote>
-			<div>
-				<label>Width:</label><label><input name="gw" type="radio"
-					value="" /> </label> <input data-bind="value: width" /> <label><input
-					name="gw" type="radio" value="" />Auto</label> <br>
-					<span data-bind="text: width"></span>
-			</div>
-			<div>
-				<label>Height:</label> <label><input name="gh" type="radio"
-					value="" /> </label> <input data-bind="value: height" /> <label><input
-					name="gh" type="radio" value="" />Auto</label>
-			</div>
-		</blockquote>
+		<div id="display">
+			<label>Display Options</label>
+			<blockquote>
+				<div>
+					<label>Width:</label><label><input name="gw" type="radio"
+						value="" /> </label> <input data-bind="value: width" /> <label><input
+						name="gw" type="radio" value="" />Auto</label> <br> <span
+						data-bind="text: width"></span>
+				</div>
+				<div>
+					<label>Height:</label> <label><input name="gh" type="radio"
+						value="" /> </label> <input data-bind="value: height" /> <label><input
+						name="gh" type="radio" value="" />Auto</label>
+				</div>
+			</blockquote>
+		</div>
 	</div>
+	<HR style="border: 1 dashed #987cb9" width="95%" color=#987cb9 SIZE=1>
+	<div id="chart"></div>
 	<script src="js\view-model.js"></script>
 </body>
 </html>
