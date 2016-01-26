@@ -39,7 +39,7 @@
 			<blockquote>
 				<div id="width">
 					<label>Width</label> <input id="w_custom" name="gw" type="radio"
-						data-bind="checked: widthAuto" value="no" /> <input
+						data-bind="checked: widthAuto" value="no" /> <input id="width_tf"
 						data-bind="value: width" /> <input id="w_auto" name="gw"
 						type="radio" data-bind="checked: widthAuto" value="yes" /> <label>Auto</label>
 					<!-- <span
@@ -48,8 +48,8 @@
 				<div id="height">
 					<label>Height</label> <input id="h_custom" name="gh" type="radio"
 						data-bind="checked: heightAuto" value="no" /> <input
-						data-bind="value: height" /> <input id="h_custom" name="gh"
-						type="radio" data-bind="checked: heightAuto" value="yes" /><label>Auto</label>
+						id="height_tf" data-bind="value: height" /> <input id="h_custom"
+						name="gh" type="radio" data-bind="checked: heightAuto" value="yes" /><label>Auto</label>
 				</div>
 			</blockquote>
 		</div>
@@ -60,6 +60,9 @@
 	<script>
 		// Initialize
 		drawChart();
+		// JQuery
+		$("#width_tf").attr("disabled", true);
+		$("#height_tf").attr("disabled", true);
 	</script>
 </body>
 </html>

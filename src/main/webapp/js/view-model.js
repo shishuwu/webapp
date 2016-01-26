@@ -32,9 +32,21 @@ viewModel.width.subscribe(function() {
 viewModel.height.subscribe(function() {
 	drawChart();
 });
-viewModel.widthAuto.subscribe(function() {
+viewModel.widthAuto.subscribe(function(auto) {
 	drawChart();
+	// JQuery :)
+	if (auto == 'yes') {
+		$("#width_tf").attr("disabled", true);
+	} else {
+		$("#width_tf").attr("disabled", false);
+	}
 });
-viewModel.heightAuto.subscribe(function() {
+viewModel.heightAuto.subscribe(function(auto) {
 	drawChart();
+	// JQuery :)
+	if (auto == 'yes') {
+		$("#height_tf").attr("disabled", true);
+	} else {
+		$("#height_tf").attr("disabled", false);
+	}
 });
