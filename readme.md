@@ -1,5 +1,16 @@
 ====================================PURPOSE========================================
 
+2016-1-26
+* Add Front-end UI with D3 & Knockout & JQuery & Bootstrap
+- Draw chart as both Pie & Bar
+- If you would like to view code, please only care following foler and files
+	- src\main\webapp
+		- css
+		- data
+		- js
+		- index.html (this is the UI entry)
+----------------------------------------------------------------------------------
+
 This is simple web application which is used to test following frameworks.
 -- Maven integration
 -- CI integration
