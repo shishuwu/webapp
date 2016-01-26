@@ -1,17 +1,29 @@
 function drawChart() {
 	var chartType = viewModel.selectedChartType();
+	var dimension = viewModel.selectedDimension().toLowerCase();// "p_name";
+	var metric = viewModel.selectedMetric().toLowerCase();// "p_price"
+
+	var widthAuto = viewModel.widthAuto();
+	var width = 500;
+	if (widthAuto == 'no') {
+		width = viewModel.width();
+	}
+
+	var heightAuto = viewModel.heightAuto();
+	var height = 500;
+	if (heightAuto == 'no') {
+		height = viewModel.height();
+	}
 
 	d3.select("div#chart svg").remove();
 	if (chartType == 'Pie') {
-		drawPie();
+		drawPie(dimension, metric, width, height);
 	} else if (chartType == 'Bar') {
-		drawBar();
+		drawBar(dimension, metric, width, height);
 	}
 }
 
-function drawPie() {
-	var width = viewModel.width();
-	var height = viewModel.height();
+function drawPie(dimension, metric, width, height) {
 	// var color = d3.scale.ordinal().range([ "red", "orange", "blue" ]);
 	var color = d3.scale.linear().domain([ 0, 100 ]).range([ "red", "blue" ]);
 
@@ -39,8 +51,8 @@ function drawPie() {
 		 * console.log(dataByName);
 		 */
 
-		var dimension = "p_name";
-		var metric = "p_price"
+		var dimension = viewModel.selectedDimension().toLowerCase();// "p_name";
+		var metric = viewModel.selectedMetric().toLowerCase();// "p_price"
 
 		// group by p_name -> count(p_name), sum(p_price), avg(p_price)
 		var dataMetrics = d3.nest().key(function(d) {
@@ -82,15 +94,17 @@ function drawPie() {
 	})
 }
 
-function drawBar() {
+function drawBar(dimension, metric, width, height) {
 	console.log("draw bar...");
 	var margin = {
 		top : 40,
 		right : 20,
 		bottom : 30,
 		left : 40
-	}, width = 960 - margin.left - margin.right, height = 500 - margin.top
-			- margin.bottom;
+	};
+
+	width = width - margin.left - margin.right;
+	height = height - margin.top - margin.bottom;
 
 	// var formatPercent = d3.format(".0%");
 
@@ -104,8 +118,9 @@ function drawBar() {
 
 	var tip = d3.tip().attr('class', 'd3-tip').offset([ -10, 0 ]).html(
 			function(d) {
-				return "<strong>Price:</strong> <span style='color:red'>"
-						+ d.values.avg + "</span>";
+				return "<strong>" + metric
+						+ "</strong> <span style='color:red'>" + d.values.avg
+						+ "</span>";
 			})
 
 	var svg = d3.select("div#chart").append("svg").attr("width",
@@ -114,54 +129,53 @@ function drawBar() {
 			"translate(" + margin.left + "," + margin.top + ")");
 	svg.call(tip);
 
-	d3.csv("data/data.csv",
-			function(data) {
+	d3.csv("data/data.csv", function(data) {
 
-				// group by p_name -> count(p_name), sum(p_price), avg(p_price)
-				var dataMetrics = d3.nest().key(function(d) {
-					// return d.p_year;
-					return d.p_name;
-				}).rollup(function(v) {
-					return {
-						count : v.length,
-						total : d3.sum(v, function(d) {
-							return d.p_price;
-						}),
-						avg : d3.mean(v, function(d) {
-							return d.p_price;
-						})
-					};
-				}).entries(data);
-				console.log(dataMetrics);
-				console.log("key: " + dataMetrics[0].key)
-				console.log("avg: " + dataMetrics[0].values.avg)
+		// group by p_name -> count(p_name), sum(p_price), avg(p_price)
+		var dataMetrics = d3.nest().key(function(d) {
+			// return d.p_year;
+			return d[dimension];
+		}).rollup(function(v) {
+			return {
+				count : v.length,
+				total : d3.sum(v, function(d) {
+					return d[metric];
+				}),
+				avg : d3.mean(v, function(d) {
+					return d[metric];
+				})
+			};
+		}).entries(data);
+		console.log(dataMetrics);
+		console.log("key: " + dataMetrics[0].key)
+		console.log("avg: " + dataMetrics[0].values.avg)
 
-				// Just for test: because some range are big
-				dataMetrics = dataMetrics.slice(0, 20);
-				// ===================
-				x.domain(dataMetrics.map(function(d) {
-					return d.key;
-				}));
-				y.domain([ 0, d3.max(dataMetrics, function(d) {
-					return d.values.avg;
-				}) ]);
+		// Just for test: because some range are big
+		dataMetrics = dataMetrics.slice(0, 20);
+		// ===================
+		x.domain(dataMetrics.map(function(d) {
+			return d.key;
+		}));
+		y.domain([ 0, d3.max(dataMetrics, function(d) {
+			return d.values.avg;
+		}) ]);
 
-				svg.append("g").attr("class", "x axis").attr("transform",
-						"translate(0," + height + ")").call(xAxis);
+		svg.append("g").attr("class", "x axis").attr("transform",
+				"translate(0," + height + ")").call(xAxis);
 
-				svg.append("g").attr("class", "y axis").call(yAxis).append(
-						"text").attr("transform", "rotate(-90)").attr("y", 6)
-						.attr("dy", ".71em").style("text-anchor", "end").text(
-								"Avg(Price)");
+		svg.append("g").attr("class", "y axis").call(yAxis).append("text")
+				.attr("transform", "rotate(-90)").attr("y", 6).attr("dy",
+						".71em").style("text-anchor", "end").text(
+						"Avg(" + metric + ")");
 
-				svg.selectAll(".bar").data(dataMetrics).enter().append("rect")
-						.attr("class", "bar").attr("x", function(d) {
-							return x(d.key);
-						}).attr("width", x.rangeBand()).attr("y", function(d) {
-							return y(d.values.avg);
-						}).attr("height", function(d) {
-							return height - y(d.values.avg);
-						}).on('mouseover', tip.show).on('mouseout', tip.hide)
+		svg.selectAll(".bar").data(dataMetrics).enter().append("rect").attr(
+				"class", "bar").attr("x", function(d) {
+			return x(d.key);
+		}).attr("width", x.rangeBand()).attr("y", function(d) {
+			return y(d.values.avg);
+		}).attr("height", function(d) {
+			return height - y(d.values.avg);
+		}).on('mouseover', tip.show).on('mouseout', tip.hide)
 
-			});
+	});
 }

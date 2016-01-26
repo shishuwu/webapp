@@ -38,18 +38,18 @@
 			<label>Display Options</label>
 			<blockquote>
 				<div id="width">
-					<div>
-						<label>Width</label> <input name="gw" type="radio" value="" /> <input
-							data-bind="value: width" /> <input name="gw" type="radio"
-							value="" /> <label>Auto</label>
-					</div>
+					<label>Width</label> <input id="w_custom" name="gw" type="radio"
+						data-bind="checked: widthAuto" value="no" /> <input
+						data-bind="value: width" /> <input id="w_auto" name="gw"
+						type="radio" data-bind="checked: widthAuto" value="yes" /> <label>Auto</label>
 					<!-- <span
-						data-bind="text: width"></span>-->
+					data-bind="text: width"></span>-->
 				</div>
 				<div id="height">
-					<label>Height</label> <input name="gh" type="radio" value="" /> <input
-						data-bind="value: height" /> <input name="gh" type="radio"
-						value="" /><label>Auto</label>
+					<label>Height</label> <input id="h_custom" name="gh" type="radio"
+						data-bind="checked: heightAuto" value="no" /> <input
+						data-bind="value: height" /> <input id="h_custom" name="gh"
+						type="radio" data-bind="checked: heightAuto" value="yes" /><label>Auto</label>
 				</div>
 			</blockquote>
 		</div>
@@ -57,5 +57,9 @@
 	<HR style="border: 1 dashed #987cb9" width="95%" color=#987cb9 SIZE=1>
 	<div id="chart"></div>
 	<script src="js\view-model.js"></script>
+	<script>
+		// Initialize
+		drawChart();
+	</script>
 </body>
 </html>

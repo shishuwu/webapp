@@ -9,11 +9,11 @@
 }
 
 .bar {
-	fill: green;
+	fill: LightSkyBlue;
 }
 
 .bar:hover {
-	fill: orangered;
+	fill: CornflowerBlue;
 }
 
 .x.axis path {
