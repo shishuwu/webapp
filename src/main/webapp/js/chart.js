@@ -27,14 +27,24 @@ function drawPie(dimension, metric, width, height) {
 	// var color = d3.scale.ordinal().range([ "red", "orange", "blue" ]);
 	var color = d3.scale.linear().domain([ 0, 100 ]).range([ "red", "blue" ]);
 
-	var canvas = d3.select("div#chart").append("svg").attr("width", width)
-			.attr("height", height);
+	var tip = d3.tip().attr('class', 'd3-tip').offset([ -10, 0 ]).html(
+			function(d) {
+				return "<strong>" + dimension
+						+ "</strong> <span style='color:red'>" + d.data.key
+						+ "</span><br>" + "<strong>" + metric
+						+ "</strong> <span style='color:red'>"
+						+ d.data.values.avg + "</span>";
+			})
+
+	var svg = d3.select("div#chart").append("svg").attr("width", width).attr(
+			"height", height);
+	svg.call(tip);
 
 	var min = Math.min(width, height);
 
 	var r = (min - 300) / 2;
 
-	var group = canvas.append("g").attr("transform",
+	var group = svg.append("g").attr("transform",
 			"translate(" + r + "," + r + ")");
 
 	var arc = d3.svg.arc().innerRadius(0).outerRadius(r);
@@ -83,14 +93,14 @@ function drawPie(dimension, metric, width, height) {
 
 		arcs.append("path").attr("d", arc).attr("fill", function(d) {
 			return color(d.data.values.avg);
-		});
+		}).on('mouseover', tip.show).on('mouseout', tip.hide);
 
-		arcs.append("text").attr("transform", function(d) {
-			return "translate(" + arc.centroid(d) + ")";
-		}).attr("text-anchor", "middle").attr("font-size", "0.5em").text(
-				function(d) {
-					return d.data.key + ": " + d.data.values.avg;
-				});
+		// arcs.append("text").attr("transform", function(d) {
+		// return "translate(" + arc.centroid(d) + ")";
+		// }).attr("text-anchor", "middle").attr("font-size", "0.5em").text(
+		// function(d) {
+		// return d.data.key + ": " + d.data.values.avg;
+		//				});
 	})
 }
 
