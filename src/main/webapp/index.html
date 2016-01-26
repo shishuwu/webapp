@@ -11,58 +11,62 @@
 </head>
 
 <body>
-	<div id="config">
-		<div id="type">
-			<label>Chart Type</label>
-			<blockquote>
-				<select data-bind="options: chartTypes, value: selectedChartType"></select>
-				<!-- <span data-bind="text: selectedChartType"></span>  -->
-			</blockquote>
-		</div>
+	<div class="container">
+		<div id="config">
+			<div id="type">
+				<label>Chart Type</label>
+				<blockquote>
+					<select data-bind="options: chartTypes, value: selectedChartType"></select>
+					<!-- <span data-bind="text: selectedChartType"></span>  -->
+				</blockquote>
+			</div>
 
-		<div id="setting">
-			<label>Chart Settings</label>
-			<blockquote>
-				<div>
-					<label>Dimension: </label> <select
-						data-bind="options: dimensions, value: selectedDimension"></select>
-				</div>
-				<div>
-					<label>Metric: Avg</label> <select
-						data-bind="options: metrics, value: selectedMetric"></select>
-				</div>
-			</blockquote>
-		</div>
+			<div id="setting">
+				<label>Chart Settings</label>
+				<blockquote>
+					<div>
+						<label>Dimension: </label> <select
+							data-bind="options: dimensions, value: selectedDimension"></select>
+					</div>
+					<div>
+						<label>Metric: Avg</label> <select
+							data-bind="options: metrics, value: selectedMetric"></select>
+					</div>
+				</blockquote>
+			</div>
 
-		<div id="display">
-			<label>Display Options</label>
-			<blockquote>
-				<div id="width">
-					<label>Width</label> <input id="w_custom" name="gw" type="radio"
-						data-bind="checked: widthAuto" value="no" /> <input id="width_tf"
-						data-bind="value: width" /> <input id="w_auto" name="gw"
-						type="radio" data-bind="checked: widthAuto" value="yes" /> <label>Auto</label>
-					<!-- <span
+			<div id="display">
+				<label>Display Options</label>
+				<blockquote>
+					<div id="width">
+						<label>Width</label> <input id="w_custom" name="gw" type="radio"
+							data-bind="checked: widthAuto" value="no" /> <input
+							id="width_tf" data-bind="value: width" /> <input id="w_auto"
+							name="gw" type="radio" data-bind="checked: widthAuto" value="yes" />
+						<label>Auto</label>
+						<!-- <span
 					data-bind="text: width"></span>-->
-				</div>
-				<div id="height">
-					<label>Height</label> <input id="h_custom" name="gh" type="radio"
-						data-bind="checked: heightAuto" value="no" /> <input
-						id="height_tf" data-bind="value: height" /> <input id="h_custom"
-						name="gh" type="radio" data-bind="checked: heightAuto" value="yes" /><label>Auto</label>
-				</div>
-			</blockquote>
+					</div>
+					<div id="height">
+						<label>Height</label> <input id="h_custom" name="gh" type="radio"
+							data-bind="checked: heightAuto" value="no" /> <input
+							id="height_tf" data-bind="value: height" /> <input id="h_custom"
+							name="gh" type="radio" data-bind="checked: heightAuto"
+							value="yes" /><label>Auto</label>
+					</div>
+				</blockquote>
+			</div>
 		</div>
+		<HR style="border: 1 dashed #987cb9" width="95%" color=#987cb9 SIZE=1>
+		<div id="chart"></div>
+		<script src="js\view-model.js"></script>
+		<script>
+			// Initialize
+			drawChart();
+			// JQuery
+			$("#width_tf").attr("disabled", true);
+			$("#height_tf").attr("disabled", true);
+		</script>
 	</div>
-	<HR style="border: 1 dashed #987cb9" width="95%" color=#987cb9 SIZE=1>
-	<div id="chart"></div>
-	<script src="js\view-model.js"></script>
-	<script>
-		// Initialize
-		drawChart();
-		// JQuery
-		$("#width_tf").attr("disabled", true);
-		$("#height_tf").attr("disabled", true);
-	</script>
 </body>
 </html>
