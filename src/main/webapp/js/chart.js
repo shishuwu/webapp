@@ -25,8 +25,7 @@ function drawChart() {
 
 function drawPie(dimension, metric, width, height) {
 	// var color = d3.scale.ordinal().range([ "red", "orange", "blue" ]);
-	var color = d3.scale.linear().domain([ 0, 100 ]).range([ "red", "blue" ]);
-
+	var color = d3.scale.linear().range([ "blue", "orange" ]);
 	var tip = d3.tip().attr('class', 'd3-tip').offset([ -10, 0 ]).html(
 			function(d) {
 				return "<strong>" + dimension
@@ -81,10 +80,14 @@ function drawPie(dimension, metric, width, height) {
 				})
 			};
 		}).entries(data);
-		console.log(dataMetrics);
-		console.log("key: " + dataMetrics[0].key)
-		console.log("avg: " + dataMetrics[0].values.avg)
 
+		color.domain([ 0, d3.max(dataMetrics, function(d) {
+			return d.values.avg;
+		}) ]);
+
+		// console.log(dataMetrics);
+		// console.log("key: " + dataMetrics[0].key)
+		// console.log("avg: " + dataMetrics[0].values.avg)
 		// Just for test: because some range are big
 		// dataMetrics = dataMetrics.slice(0, 10);
 		// ===================
@@ -100,7 +103,7 @@ function drawPie(dimension, metric, width, height) {
 		// }).attr("text-anchor", "middle").attr("font-size", "0.5em").text(
 		// function(d) {
 		// return d.data.key + ": " + d.data.values.avg;
-		//				});
+		// });
 	})
 }
 
@@ -109,9 +112,11 @@ function drawBar(dimension, metric, width, height) {
 	var margin = {
 		top : 40,
 		right : 20,
-		bottom : 30,
+		bottom : 300,
 		left : 40
 	};
+	// Why bottom is a little big: because the p_name is too long on the bottom.
+	// It is for this value
 
 	width = width - margin.left - margin.right;
 	height = height - margin.top - margin.bottom;
@@ -128,7 +133,9 @@ function drawBar(dimension, metric, width, height) {
 
 	var tip = d3.tip().attr('class', 'd3-tip').offset([ -10, 0 ]).html(
 			function(d) {
-				return "<strong>" + metric
+				return "<strong>" + dimension
+						+ "</strong> <span style='color:red'>" + d.key
+						+ "</span><br>" + "<strong>" + metric
 						+ "</strong> <span style='color:red'>" + d.values.avg
 						+ "</span>";
 			})
@@ -156,10 +163,9 @@ function drawBar(dimension, metric, width, height) {
 				})
 			};
 		}).entries(data);
-		console.log(dataMetrics);
-		console.log("key: " + dataMetrics[0].key)
-		console.log("avg: " + dataMetrics[0].values.avg)
-
+		// console.log(dataMetrics);
+		// console.log("key: " + dataMetrics[0].key)
+		// console.log("avg: " + dataMetrics[0].values.avg)
 		// Just for test: because some range are big
 		dataMetrics = dataMetrics.slice(0, 20);
 		// ===================
@@ -171,7 +177,10 @@ function drawBar(dimension, metric, width, height) {
 		}) ]);
 
 		svg.append("g").attr("class", "x axis").attr("transform",
-				"translate(0," + height + ")").call(xAxis);
+				"translate(0," + height + ")").call(xAxis)
+		// fix the overlap problem
+		.selectAll("text").style("text-anchor", "end").attr("dx", "-.8em")
+				.attr("dy", ".15em").attr("transform", "rotate(-65)");
 
 		svg.append("g").attr("class", "y axis").call(yAxis).append("text")
 				.attr("transform", "rotate(-90)").attr("y", 6).attr("dy",
