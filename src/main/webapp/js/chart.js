@@ -24,7 +24,13 @@ function drawChart() {
 }
 
 function drawPie(dimension, metric, width, height) {
-	// var color = d3.scale.ordinal().range([ "red", "orange", "blue" ]);
+	var margin = {
+			top : 40,
+			right : 20,
+			bottom : 30,
+			left : 40
+		};
+	
 	var color = d3.scale.linear().range([ "blue", "orange" ]);
 	var tip = d3.tip().attr('class', 'd3-tip').offset([ -10, 0 ]).html(
 			function(d) {
@@ -41,7 +47,7 @@ function drawPie(dimension, metric, width, height) {
 
 	var min = Math.min(width, height);
 
-	var r = (min - 300) / 2;
+	var r = min  / 2;
 
 	var group = svg.append("g").attr("transform",
 			"translate(" + r + "," + r + ")");
