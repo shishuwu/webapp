@@ -66,8 +66,9 @@ function drawPie(dimension, metric, width, height) {
 		 * console.log(dataByName);
 		 */
 
-		var dimension = viewModel.selectedDimension().toLowerCase();// "p_name";
-		var metric = viewModel.selectedMetric().toLowerCase();// "p_price"
+		// var dimension = viewModel.selectedDimension().toLowerCase();//
+		// "p_name";
+		// var metric = viewModel.selectedMetric().toLowerCase();// "p_price"
 
 		// group by p_name -> count(p_name), sum(p_price), avg(p_price)
 		var dataMetrics = d3.nest().key(function(d) {
