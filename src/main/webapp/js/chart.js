@@ -36,8 +36,8 @@ function drawPie(dimension, metric, width, height) {
 			function(d) {
 				return "<strong>" + dimension
 						+ "</strong> <span style='color:red'>" + d.data.key
-						+ "</span><br>" + "<strong>" + metric
-						+ "</strong> <span style='color:red'>"
+						+ "</span><br>" + "<strong> Avg(" + metric
+						+ ")</strong> <span style='color:red'>"
 						+ d.data.values.avg + "</span>";
 			})
 
