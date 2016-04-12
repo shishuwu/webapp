@@ -1,0 +1,112 @@
+
+======================Cloud===================
+* Why?
+	- Use everywhere (office, home, any other places that out of office)
+	- Always on, stable (so far)
+
+* Amazon emc2: 
+	- Free Trail: 1 year
+	- Window 2008/2012 Server, Linux: CPU/1G, Memory 1G
+	
+* Configuration
+	- Port: In/out  
+		* Only RDP 3389 (by default)
+		* Other: 8080 for jenkins
+		
+======================Jenkins===================
+* Installation and start up
+	- Web Server: written by java
+	- http://domain:8080
+
+* Configure:
+	- Security: 
+		* Set sign up account
+	- Update Plugins
+		...
+		* GitHub/Git plugin
+			- Code repository
+		* Locale Plugin
+			- Could set the jenkins UI language
+			- Go to Manage Jenkins -> Configure System -> Locale. Set value like: en_US
+		* Deploy to container Plugin
+			- Deploy war to a web server (such as tomcat) after build.
+				target/webapp-1.0.0-SNAPSHOT.war
+				**/*.war
+			- Tomcat
+				* Need to add a deploy user (here i've configured root/***)../conf/tomcat-users.xml: 
+					- <user username="deployer" password="deployer" roles="manager-script" />
+				* http://www.jdev.it/deploying-your-war-file-from-jenkins-to-tomcat/
+			
+	- Glabol configuraton
+		* JDK
+		* Git
+		* Maven
+		* Email-Notification
+			- Test doesn't work sometimes. You just need to send mail in a real project.
+		(Enable Auto Refresh)
+* Projects
+	- Create project
+		* Maven Project
+		* Git Repo
+			- git clone url
+			- credential
+		* Maven goal
+			- clean install
+			- clean site
+				* maven lifecycle: http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html
+					- in sequence
+					- exec prior
+		* Email-Notification
+			- recipients: xx@yy.com
+			
+	- Run build
+		* Analyse console log
+		
+	- Build Triggers
+		* 
+		
+		
+* Distructed Jenkins: Node!!!
+	- Why?
+		* Performance/load balance
+		* Environment adaptation
+		
+	- Nodes: Master/Slave
+		* It has a label to represent itself
+		
+		
+	- Startup type:
+		* Java web start (chosen)
+		* Windows service
+		* Linux ...
+		
+	- No need to install Jenkins on slave node and configure
+		
+		
+	- For project:
+		* Label expression
+		* Build: see console output
+		
+
+	
+* Maven
+	- Goal:
+		* Just need input the goal, such as: test install
+		* For Jetty plugin, you can specify the goal as this: -Djetty.port=9999 jetty:run
+		jetty:stop jetty:run-forked
+	
+	- Multiple projects dependency
+		* Server depends Common: Common project goals need to -> install
+		
+		
+		
+* Project Dependency
+	- Each project configuration: 
+	
+======================Reference===================
+Jenkins (Master):
+	http://54.92.104.146:8080
+	
+	
+My Project Web Server:
+	http://54.64.124.167:8080/webapp/
